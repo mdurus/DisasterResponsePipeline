@@ -1,3 +1,4 @@
+import pickle #put in the start near all imports
 import json
 import plotly
 import pandas as pd
@@ -26,12 +27,14 @@ def tokenize(text):
     return clean_tokens
 
 # load data
-engine = create_engine('sqlite:///../data/DisasterResponse.db')
+#engine = create_engine('sqlite:///../data/DisasterResponse.db')
+engine = create_engine('sqlite:///{}'.format('../data/DisasterResponse.db'))
 #engine = create_engine('sqlite:///{}'.format('DisasterResponse.db'))
 df = pd.read_sql_table('InsertTableName', engine)
 # load model
-model = joblib.load("../models/classifier.pkl")
+#model = joblib.load("../models/classifier.pkl")
 #model = joblib.load('sqlite:///{}'.format('classifier.pkl'))
+model = pickle.load(open("../models/classifier.pkl", 'rb'))
 
 # index webpage displays cool visuals and receives user input text for model
 @app.route('/')
