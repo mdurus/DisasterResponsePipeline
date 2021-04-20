@@ -41,3 +41,16 @@ You can reach the web app from 'https://view6914b2f4-3001.udacity-student-worksp
     
 ![image](https://user-images.githubusercontent.com/26851673/115455489-b1307080-a22a-11eb-9f8e-5c177262480f.png)
 
+## 5. Instructions
+
+To run 
+- ETL pipeline that cleans data and stores in database python: data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
+- ML pipeline that trains classifier and saves python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
+- Run your web app python run.py Run env | grep WORK command to obtain space-id and workspace-id.
+
+## 6. Acknowledgement
+
+We must acknowledge figure eight for data sharing and udacity course for directions during learning journey.
+
+
+
