@@ -9,6 +9,15 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+     
+    """
+    Function: Load the message and categorie db
+    Args:
+      messages_filepath(str): Path of messages database
+      categories_filepath(str): Path of categories database
+    Return:
+      df(dataframe): Database that is merged of messages and categories
+    """
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = pd.merge(messages,categories,how ='inner',on="id")
@@ -16,6 +25,15 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    
+    """
+    Function: Formatt dataframe and split the categories and add as a dummy variable
+    Args:
+      df(dataframe): Db created by the merging of messages and categories      
+    Return:
+      df(dataframe): Formatted dataframe with the dummy variables for categories
+    """
+    
     categories = df.categories.str.split(';', expand=True)
     row = categories.iloc[[1]]
     category_colnames = row.applymap(lambda x: x[:-2]).iloc[0, :].tolist()
@@ -33,6 +51,13 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    
+    """
+    Function: Save the output dataframe as a SQL table
+    Args:
+      df(dataframe): Db created by the merging of messages and categories      
+    """
+    
     engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('InsertTableName', engine, index=False, if_exists='replace')  
 
