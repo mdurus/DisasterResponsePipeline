@@ -99,7 +99,7 @@ def evaluate_model(model, X_test, Y_test):
     y_test:Test labels
     """
     
-    y_pred = model.predict(X_test)
+    y_pred = model.predict(X_test):
 
     for i, col in enumerate(Y_test):
         print(col)
