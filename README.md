@@ -28,12 +28,14 @@ Idea behind the project:
     - ETL Pipeline Preparation.ipynb # 1st part of the project
     - ML Pipeline Preparation.ipynb # 2nd part of the project
 
-3. Pipelines
-   Process_data.py and train_classifier.py files are constructed by using ipynb notebooks. Details of the steps are provided in the notebooks.
+## 3. Pipelines
+
+Process_data.py and train_classifier.py files are constructed by using ipynb notebooks. Details of the steps are provided in the notebooks.
 
 4. Flask Web App
-    To have a visualization a web app is used. To run our web app python run.py Run env | grep WORK command is used to obtain space-id and workspace-id.
-    You can reach the web app from 'https://view6914b2f4-3001.udacity-student-workspaces.com/'
+
+To have a visualization a web app is used. To run our web app python run.py Run env | grep WORK command is used to obtain space-id and workspace-id.
+You can reach the web app from 'https://view6914b2f4-3001.udacity-student-workspaces.com/'
     
-   ![image](https://user-images.githubusercontent.com/26851673/115455489-b1307080-a22a-11eb-9f8e-5c177262480f.png)
+![image](https://user-images.githubusercontent.com/26851673/115455489-b1307080-a22a-11eb-9f8e-5c177262480f.png)
 
