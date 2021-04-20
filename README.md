@@ -29,7 +29,7 @@ Idea behind the project:
     - ML Pipeline Preparation.ipynb # 2nd part of the project
 
 3. Pipelines
-    process_data.py and train_classifier.py files are constructed by using ipynb notebooks. Details of the steps are provided in the notebooks.
+   Process_data.py and train_classifier.py files are constructed by using ipynb notebooks. Details of the steps are provided in the notebooks.
 
 4. Flask Web App
     To have a visualization a web app is used. To run our web app python run.py Run env | grep WORK command is used to obtain space-id and workspace-id.
