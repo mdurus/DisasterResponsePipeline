@@ -26,6 +26,15 @@ from sklearn.metrics import classification_report
 from sqlalchemy import create_engine
 
 def load_data(database_filepath):
+    
+    """
+    Function: Load the database from the SQL_table
+    Args:
+      database_filepath(str): Path of the db messages
+    Return:
+      X,Y(dataframes): Two dbs for inputs and outputs of the ML_pipeline
+    """
+    
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table('InsertTableName', con=engine)
     X = df['message']
@@ -34,6 +43,15 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    
+    """
+    Function: Split the messages and find the roots W/O the stop words
+    Args:
+      text: List of messages as str
+    Return:
+      tokens: A list of messages after process
+    """
+    
     # Normalize text
     text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
 
@@ -50,6 +68,13 @@ def tokenize(text):
 
 
 def build_model():
+    
+    """
+     Function: Build Classifiers 
+     Return:
+       cv1: The model for training
+     """
+    
     pipeline1 =  Pipeline([
         ('vect', CountVectorizer(tokenizer = tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -66,6 +91,14 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test):
+    
+     """
+    Function:Evaluate F1 score, precision and recall
+    model:model
+    X_test:Test messages
+    y_test:Test labels
+    """
+    
     y_pred = model.predict(X_test)
 
     for i, col in enumerate(Y_test):
@@ -76,6 +109,13 @@ def evaluate_model(model, X_test, Y_test):
 
 
 def save_model(model, model_filepath):
+    
+    """
+    Function: Save the model as a pickle file
+    model:model
+    model_filepath:Path of pickle file
+    """
+    
     with open(model_filepath, 'wb') as f:
         pickle.dump(model, f)
 
