@@ -3,7 +3,7 @@
 ### Idea behind the project:
     Web app to be constructed where an emergency worker can input a new message and get classification results in several categories. With the help of this, they can easily analyze the messages to predict the disasters. App displays visualizations of the data also.
      
-## 1. Used libraries;
+# 1. Used libraries;
     - Pandas
     - Numpy
     - nltk
