@@ -1,10 +1,10 @@
 import sys
-#import os
+import os
 import pandas as pd
 import sqlite3
 from sqlalchemy import create_engine
-#import matplotlib.pyplot as plt
-#import seaborn as sns
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 
@@ -35,15 +35,27 @@ def clean_data(df):
     """
     
     categories = df.categories.str.split(';', expand=True)
+    
     row = categories.iloc[[1]]
     category_colnames = row.applymap(lambda x: x[:-2]).iloc[0, :].tolist()
+    
     categories.columns = category_colnames
+    
+    
     for column in categories:
     # set each value to be the last character of the string
         categories[column] = categories[column].astype(str).str[-1:]
     
     # convert column from string to numeric
         categories[column] = categories[column].astype(int)
+        
+    not_binary_columns=(categories.max()>1)[categories.max()>1].index
+    # update non binary values to 1
+    for col in not_binary_columns:
+        #print(categories[col].value_counts())
+        categories.loc[categories[col]>1,col] = 1
+        #print(categories[col].value_counts())
+    
     df = df.drop(['categories'],axis = 1)
     df = pd.concat([df,categories], axis = 1)
     df.drop_duplicates(inplace = True)
